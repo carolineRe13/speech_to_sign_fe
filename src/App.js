@@ -4,7 +4,7 @@ import './App.css';
 import React, { Component } from 'react'
  
 import AudioReactRecorder, { RecordState } from 'audio-react-recorder'
- 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -35,15 +35,22 @@ class App extends Component {
  
   render() {
     const { recordState } = this.state
+
+    // TODO make responsive https://www.codegrepper.com/code-examples/javascript/how+to+get+screen+width+in+react+js
+    let hasWindow = typeof window !== 'undefined';
+    const width = hasWindow ? window.innerWidth : null;
  
     return (
       <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <AudioReactRecorder state={recordState} onStop={this.onStop} />
+        <AudioReactRecorder state={recordState} onStop={this.onStop} 
+        backgroundColor={"rgb(40, 44, 52)"} foregroundColor={"rgb(97, 218, 251)"}
+        canvasWidth={width}/>
  
-        <button onClick={this.start}>Start</button>
-        <button onClick={this.stop}>Stop</button>
+        <div>
+          <button onClick={this.start}>Start</button>
+          <button onClick={this.stop}>Stop</button>
+        </div>
       </header>
     </div>
     )
