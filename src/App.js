@@ -28,9 +28,21 @@ class App extends Component {
  
   //audioData contains blob and blobUrl
   onStop = (audioData) => {
-    console.log('audioData', audioData)
+    var data = new FormData()
+    data.append('audio_data', audioData.blob)
 
     // TODO call api
+    const requestOptions = {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'audio.wav' },
+      body: data
+  };
+  fetch('http://127.0.0.1:5000/speech_to_ASL ', requestOptions).then((response) => {
+    console.log(response)
+    window.location.href = "/video?id=" + response;
+  })
+
   }
  
   render() {
