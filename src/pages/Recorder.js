@@ -44,7 +44,8 @@ class Recorder extends Component {
     fetch('http://127.0.0.1:5000/speech_to_ASL ', requestOptions)
     .then(response => response.json())
     .then(data => {
-      window.location.href = '/video?id=' + data.video_id;
+      if (data?.video_id)
+        window.location.href = '/video?id=' + data.video_id;
     });
 
   }
