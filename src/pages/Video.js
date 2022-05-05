@@ -20,6 +20,7 @@ class Video extends Component {
                     <video controls muted autoPlay>
                         <source src={`http://localhost:5000/video/${this.state.videoId}`} type="video/mp4"></source>
                     </video>
+                    <a href="/" class="button">New recording</a>
                 </header>
             </div>
         )
